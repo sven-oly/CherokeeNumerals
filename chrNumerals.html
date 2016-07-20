@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+    
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>ᏏᏉᏯ Numerals - Cherokee
+    </title>
+   
+    <link rel="stylesheet" type="text/css" href="/css/calculator.css">
+    <link rel="stylesheet" type="text/css" href="/css/chrCalculator.css">
+
+    <script type="text/javascript">
+ 
+    function onload() {
+      var decimalCalculator = setupCalc();
+	}
+
+	</script>
+   </head>
+   
+    <body>
+    ᎣᏏᏲ Numerals
+   
+    <h2>OOP Calculator</h2>
+
+    <!-- From http://jsfiddle.net/doug65536/peC3r/ -->
+    <div id="calculator">
+    <form action='index.html' method='post' name='calc'>
+        <input type='text' disabled='false' name='output' id='output' value="0" />
+        <table id="buttontable">
+            <tr>
+                <td>
+                    <input type='button' value='C' />
+                </td>
+                <td>
+                    <input type='button' value='BS' disabled />
+                </td>
+                <td>
+                    <input type='button' value='MR' disabled />
+                </td>
+                <td>
+                    <input type='button' value='MC' disabled />
+                </td>
+                <td>
+                    <input type='button' value='M+' disabled />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type='button' value='7' />
+                </td>
+                <td>
+                    <input type='button' value='8' />
+                </td>
+                <td>
+                    <input type='button' value='9' />
+                </td>
+                <td>
+                    <input type='button' value='*' />
+                </td>
+                <td>
+                    <input type='button' value='tan' />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type='button' value='4' />
+                </td>
+                <td>
+                    <input type='button' value='5' />
+                </td>
+                <td>
+                    <input type='button' value='6' />
+                </td>
+                <td>
+                    <input type='button' value='-' />
+                </td>
+                <td>
+                    <input type='button' value='cos' />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type='button' value='1' />
+                </td>
+                <td>
+                    <input type='button' value='2' />
+                </td>
+                <td>
+                    <input type='button' value='3' />
+                </td>
+                <td>
+                    <input type='button' value='+' />
+                </td>
+                <td>
+                    <input type='button' value='sin' />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type='button' value='0' />
+                </td>
+                <td>
+                    <input type='button' value='.' />
+                </td>
+                <td>
+                    <input type='button' value='=' />
+                </td>
+                <td>
+                    <input type='button' value='/' />
+                </td>
+                <td>
+                    <input type='button' value='ln' />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<br />
+<hr>
+<br />
+
+  <div id="chr_calculator">
+    <form action='index.html' method='post' name='calc'>
+        <input type='text' disabled='true' name='output' id='outputChr' value="0" />
+        
+    <div id="keypad"> 
+    <br>
+    
+    <!- X Register: Accumulator of images ->
+    <div id="chr_img_accumulator" class="ImageBorder">
+      <img src="/images/CHR_0.png" height="50" class="accum" alt="0">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
+    </div>
+    
+  <table id="chrButtontable">
+    <tr>
+    <td>
+      <input type='button' value='*' />
+    </td>
+    <td>
+      <img src="/images/CHR_0.png" height="30" class="ImageBorder" alt="0" value='0' title='0'>
+    </td>
+    <td>   
+        <img src="/images/CHR_1.png" height="30" class="ImageBorder" alt="1" value='1' title='1'>
+        </td>
+    <td>   
+    <img src="/images/CHR_2.png" height="30" class="ImageBorder" alt="2"  value='2' title='2'>
+        </td>
+    <td>   
+    <img src="/images/CHR_3.png" height="30"class="ImageBorder" alt="3" value='3' title='3'>
+        </td>
+    <td>   
+    <img src="/images/CHR_4.png" height="30"class="ImageBorder" alt="4" value='4' title='4'>
+        </td>
+    <td>   
+    <img src="/images/CHR_5.png" height="30" class="ImageBorder" alt="5" value='5' title='5'>
+        </td>
+    <td>   
+    <img src="/images/CHR_6.png" height="30" class="ImageBorder" alt="6" value='6' title='6'>
+        </td>
+    <td>   
+    <img src="/images/CHR_7.png" height="30" class="ImageBorder" alt="7" value='7' title='7'>
+        </td>
+    <td>   
+    <img src="/images/CHR_8.png" height="30" class="ImageBorder" alt="8" value='8' title='8'>
+        </td>
+    <td>  
+    <img src="/images/CHR_9.png" height="30" class="ImageBorder" alt="9" value='9' title='9'>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type='button' value='-' />
+    </td>
+    <td> 
+      <img src="/images/CHR_10.png" height="30"class="ImageBorder" alt="10" value='10' title='10'>
+        </td>
+    <td> 
+    <img src="/images/CHR_11.png" height="30" class="ImageBorder" alt="11" value='11' title='11'>
+        </td>
+    <td> 
+    <img src="/images/CHR_12.png" height="30" class="ImageBorder" alt="12" value='12' title='12'>
+        </td>
+    <td> 
+    <img src="/images/CHR_13.png" height="30" class="ImageBorder" alt="13" value='13' title='13'>
+        </td>
+    <td> 
+    <img src="/images/CHR_14.png" height="30" class="ImageBorder" alt="14" value='14' title='14'>
+        </td>
+    <td> 
+    <img src="/images/CHR_15.png" height="30" class="ImageBorder" alt="15" value='15' title='15'>
+        </td>
+    <td> 
+    <img src="/images/CHR_16.png" height="30" class="ImageBorder" alt="16" value='16' title='16'>
+        </td>
+    <td> 
+    <img src="/images/CHR_17.png" height="30" class="ImageBorder" alt="17" value='17' title='17'>
+        </td>
+    <td> 
+    <img src="/images/CHR_18.png" height="30" class="ImageBorder" alt="18" value='18' title='18'>
+        </td>
+    <td> 
+    <img src="/images/CHR_19.png" height="30" class="ImageBorder" alt="19" value='19' title='19'>
+    </td>
+</tr>
+<tr>
+  <td>
+     <input type='button' value='+' />
+      </td>
+    <td> 
+      <img src="/images/CHR_20.png" height="30" class="ImageBorder" alt="20" value='20' title='20'>
+	    </td>
+    <td> 
+    <img src="/images/CHR_30.png" height="30" class="ImageBorder" alt="0" value='30' title='30'>
+        </td>
+    <td> 
+    <img src="/images/CHR_40.png" height="30" class="ImageBorder" alt="40" value='40' title='40'>
+        </td>
+    <td> 
+    <img src="/images/CHR_50.png" height="30" class="ImageBorder" alt="50" value='50' title='50'>
+        </td>
+    <td> 
+    <img src="/images/CHR_60.png" height="30" class="ImageBorder" alt="60" value='60' title='60'>
+        </td>
+    <td> 
+    <img src="/images/CHR_70.png" height="30" class="ImageBorder" alt="70" value='70' title='70'>
+        </td>
+    <td> 
+    <img src="/images/CHR_80.png" height="30" class="ImageBorder" alt="80" value='80' title='80'>
+        </td>
+    <td> 
+    <img src="/images/CHR_90.png" height="30" class="ImageBorder" alt="90" value='90' title='90'>
+        </td>
+    <td> 
+    <img src="/images/CHR_100.png" height="30" class="ImageBorder" alt="100" value='100' title='100'>
+    </td>
+</tr>
+<tr>
+  <td>
+      <input type='button' value='/' />
+     </td>
+    <td> 
+       <img src="/images/CHR_1000.png" height="30" class="ImageBorder" alt="1000" value='1000' title='1000'>
+        </td>
+    <td> 
+    <img src="/images/CHR_1E6A.png" height="30" class="ImageBorder" alt="1e6" value='1e6' title='1e6'>
+        </td>
+    <td> 
+    <img src="/images/CHR_1E9A.png" height="30" class="ImageBorder" alt="1e9" value='1e9' title='1e9'>
+    </td>
+    <td> 
+        <img src="/images/CHR_1E12A.png" height="30" class="ImageBorder" alt="1e12" value='1e12' title='1e12'>
+        </td>
+    <td> 
+    <img src="/images/CHR_1E15A.png" height="30" class="ImageBorder" alt="1e15" value='1e15' title='1e15'>
+        </td>
+    <td> 
+    <img src="/images/CHR_1E18A.png" height="30" class="ImageBorder" alt="1e18" value='1e18' title='1e18'>
+        </td>
+    <td> <input type='button' value='.' /> </td>
+  </tr>
+  <tr>
+    <td> <input type='button' value='=' /> </td>
+    <td> <input type="button" value="delete"></td>
+    <td> <input type="button" value="clear"> </td>
+  </tr>
+  </table>
+  </div>
+  <br />
+  TEST OUTPUT:
+  <div id="show_testing">
+    Numeral list
+    <div id="numeral_list">
+      <br />
+    </div>
+    <div id='test_output'>
+      OK
+    </div>
+  </div>
+ </div>
+   </body>
+   
+    <script type="text/javascript" src="/js/calculator.js"> </script>
+    <script type="text/javascript" src="/js/chrFunctions.js"> </script>
+
+    <script type="text/javascript" src="/js/chrCalculator.js"> </script>
+    <script type="text/javascript" src="/js/chrNumerals.js"> </script>
+    
+</html>

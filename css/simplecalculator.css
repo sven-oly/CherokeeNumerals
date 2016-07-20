@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  letter-spacing: 2px;
+}
+#calculator {
+  width: 400px;
+  margin: 50px auto 0 auto;
+}
+.result {
+  width: 285px;
+  height: 40px;
+  border: 1px solid grey;
+  float: left;
+  line-height: 40px;
+}
+.result > p {
+  /* margin-left: 10px; */
+}
+.clear, span {
+  height: 40px;
+  border: 1px solid grey;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+.clear {
+  width: 95px;
+  float: left;
+}
+span {
+  float: left;
+  width: 95px;
+}
