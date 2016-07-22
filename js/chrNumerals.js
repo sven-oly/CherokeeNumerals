@@ -18,7 +18,9 @@
 // Toggle the region id.
 function showhide(id) {
   var e = document.getElementById(id);
-  e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+  var vis = e.style.display;
+  e.style.display = (vis == 'block') ? 'none' : 'block';
+  return;
 }
 
 function cleanUpListDeletions(l1, l2) {

@@ -1,0 +1,9 @@
+  @font-face {
+    font-family: NotoSansCherokee;
+    src: url(/fonts/NotoSansCherokee-Regular.ttf);
+  }
+
+  .chrNoto {
+    font-family: NotoSansCherokee;
+    font-size:20px;
+   }

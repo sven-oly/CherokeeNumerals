@@ -4,9 +4,14 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>ᏏᏉᏯ Numerals - Cherokee
     </title>
+
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/fonts.css">
    
     <link rel="stylesheet" type="text/css" href="/css/calculator.css">
     <link rel="stylesheet" type="text/css" href="/css/chrCalculator.css">
+
+    <script type="text/javascript" src="/js/chrNumerals.js"> </script>
 
     <script type="text/javascript">
  
@@ -14,17 +19,26 @@
       var decimalCalculator = setupCalc();
 	}
 
+    function hideshow (name){
+    var showhide = document.getElementById(name);
+    if (showhide.style.display == "none")
+    {
+        showhide.style.display = "block";
+    }
+    else{
+        showhide.style.display = "none";
+    }
+}
 	</script>
    </head>
    
-    <body>
-    ᎣᏏᏲ Numerals
+    <body background="/images/numbers.jpg" class="chrNoto">
+    <h2>ᎣᏏᏲ Numerals Calculator</h2>
    
-    <h2>OOP Calculator</h2>
-
+    <div id="calculator" style="display: none;">
     <!-- From http://jsfiddle.net/doug65536/peC3r/ -->
-    <div id="calculator">
-    <form action='index.html' method='post' name='calc'>
+      <h2>OOP Calculator</h2>
+        <form action='index.html' method='post' name='calc'>
         <input type='text' disabled='false' name='output' id='output' value="0" />
         <table id="buttontable">
             <tr>
@@ -114,11 +128,12 @@
             </tr>
         </table>
     </form>
+
+  <br />
+  <hr>
+  <br />
 </div>
 
-<br />
-<hr>
-<br />
 
   <div id="chr_calculator">
     <form action='index.html' method='post' name='calc'>
@@ -229,7 +244,7 @@
       <img src="/images/CHR_20.png" height="30" class="ImageBorder" alt="20" value='20' title='20'>
 	    </td>
     <td> 
-    <img src="/images/CHR_30.png" height="30" class="ImageBorder" alt="0" value='30' title='30'>
+    <img src="/images/CHR_30.png" height="30" class="ImageBorder" alt="30" value='30' title='30'>
         </td>
     <td> 
     <img src="/images/CHR_40.png" height="30" class="ImageBorder" alt="40" value='40' title='40'>
@@ -285,29 +300,32 @@
   </table>
   </div>
   <br />
-  TEST OUTPUT:
-  <div id="show_testing">
+  <div id="show_testing" style="display: none;">
     Numeral list
     <div id="numeral_list">
       <br />
     </div>
-    <div id='test_output'>
+   TEST OUTPUT:
+   <div id='test_output'>
       OK
     </div>
   </div>
   
  </div>
  <div id="reference">
+ <br />
  Learn more about Cherokee numerals in
  <a href="http://www.talbotlibrary.org/store/p191/Sequoyah's_Numerals_in_Cherokee_and_English.html" target="_blank_">
  Sequoyahs Numerals in Cherokee and English</a> by John Ross of the Cherokee Nation Translation Department.
  </div>
+ <div id='controls'>
+   <button onclick="hideshow('show_testing')" value="testShow">Testing</button>
+   <button onclick="hideshow('calculator')" value="calcShow">Decimal calculator</button>
+</div>
    </body>
    
     <script type="text/javascript" src="/js/calculator.js"> </script>
     <script type="text/javascript" src="/js/chrFunctions.js"> </script>
 
-    <script type="text/javascript" src="/js/chrCalculator.js"> </script>
-    <script type="text/javascript" src="/js/chrNumerals.js"> </script>
-    
+    <script type="text/javascript" src="/js/chrCalculator.js"> </script>    
 </html>

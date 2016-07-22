@@ -1,0 +1,150 @@
+  469  dirs
+  470  pu
+  471  cd ..
+  472  cd ..
+  473  ls
+  474  ls
+  475  ls C*
+  476  ls -ld C*
+  477  ls -ld ch*
+  478  cd chrNumerals/
+  479  ls
+  480  git status
+  481  du
+  482  du
+  483  ls
+  484  cd images
+  485  ls
+  486  wc *
+  487  rm *.pdf
+  488  du
+  489  ls
+  490  wc *
+  491  wc *.psd
+  492  rm *.psd
+  493  du
+  494  ls -ltra
+  495  du
+  496  ls -ltra
+  497  ls -la .*
+  498  ls -la .g*
+  499  pwd
+  500  git status
+  501  pwd
+  502  cd Projects/chrNumerals/
+  503  git remote add origin https://github.com/sven-oly/CherokeeNumerals.git
+  504  git status
+  505  ls
+  506  git init
+  507  git remote add origin https://github.com/sven-oly/CherokeeNumerals.git
+  508  git status
+  509  ls
+  510  more ZawgyiKeyboardRows.txt 
+  511  ls ../Zawgyi*
+  512  mv ZawgyiKeyboardRows.txt ../Zawgyi-Unicode-test/
+  513  ls
+  514  git status
+  515  git add 
+  516  git add .
+  517  git status
+  518  git commit
+  519  git status
+  520  git push
+  521  git status
+  522  git show
+  523  git push origin
+  524  git push origin nasterLnaster
+  525  git push origin master:master
+  526  ls
+  527  mkdir ../SAVE_chrNumerals
+  528  du
+  529  cp -rp * ../SAVE_chrNumerals/
+  530  git pull
+  531  ls
+  532  git pull help
+  533  git help pull
+  534  git pull
+  535  git branch
+  536  git --set-upstream-to=origin/master master
+  537  git pull mster
+  538  git pull master
+  539  git status
+  540  git remote
+  541  git remote info
+  542  git list remote
+  543  git list
+  544  gi tremove
+  545  ls -l .git
+  546  git log
+  547  git remote -v
+  548  git remote show
+  549  git branch 
+  550  git branch revise1
+  551  git status
+  552  git branch
+  553  git pull
+  554  git pull revise1 master
+  555  git pull origin 
+  556  git pull origin master
+  557  ls
+  558  more chrNumerals.
+  559  more chrNumerals.html 
+  560  ls
+  561  git status
+  562  ls
+  563  git add chrNumerals.html
+  564  git status
+  565  cp ../SAVE_chrNumerals/chrNumerals.html 
+  566  cp ../SAVE_chrNumerals/chrNumerals.html  .
+  567  git status
+  568  git add .
+  569  git status
+  570  rm images/*.psd images/pdf
+  571  rm images/*.psd images/*.pdf
+  572  git status
+  573  ls
+  574  ls js
+  575  grep calcTest *
+  576  rm calcTest.js 
+  577  git status
+  578  ls *.js
+  579  rm *.js
+  580  git status
+  581  ls *.py
+  582  more chrNumerals.py
+  583  more main.py
+  584  more main.py
+  585  more main.py
+  586  git status
+  587  git commit 
+  588  git status
+  589  git rm .
+  590  git rm calcTest.js *.js
+  591  git status
+  592  git rm images/*.p*
+  593  git status
+  594  h 10
+  595  cp ../SAVE_chrNumerals/images/*.png images.png
+  596  cp ../SAVE_chrNumerals/images/*.png images/
+  597  ls
+  598  pwd
+  599  mkdir images
+  600  cp ../SAVE_chrNumerals/images/*.png images/
+  601  ls images
+  602  git status
+  603  git add images/*.png
+  604  git status
+  605  git rm images/*.pdf
+  606  git rm images/*.psd
+  607  git status
+  608  git commit .
+  609  git commit
+  610  git status
+  611  git push
+  612  git status
+  613  git add .
+  614  git status
+  615  git commit
+  616  git push
+  617  h 100
+  618  h 150 > TEMP
