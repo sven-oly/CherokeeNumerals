@@ -33,6 +33,15 @@ class MainHandler(webapp2.RequestHandler):
     path = os.path.join(os.path.dirname(__file__), 'chrNumerals.html')
     self.response.out.write(template.render(path, template_values))
 
+class Game1Handler(webapp2.RequestHandler):
+  def get(self): 
+    template_values = {
+      'name': 'ᎣᏏᏲ',
+      'lang': 'en',
+    }
+    path = os.path.join(os.path.dirname(__file__), 'chrNumeralsGame.html')
+    self.response.out.write(template.render(path, template_values))
+
 class SimpleHandler(webapp2.RequestHandler):
   def get(self):
     #        self.response.write('ᎣᏏᏲ world!')
@@ -46,5 +55,6 @@ class SimpleHandler(webapp2.RequestHandler):
     
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+    ('/game/', Game1Handler),
     ('/simple/', SimpleHandler)
 ], debug=True)

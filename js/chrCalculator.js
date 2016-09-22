@@ -88,6 +88,19 @@
             } else if (character === '.') {
                 this.operand += this.operand === '' ? '0.' : '.';
                 this.numeralList.push(character);
+            } else if (character === '-') {
+                // Negate current value. If already negative, remove sign.
+                if (this.operand.length > 0 && this.operand[0] == '-') {
+                  // TODO: Remove minus
+                  this.operand = this.operand.slice(1);
+                  this.numeralList.shift();
+                } else {
+                  // TODO: Prepend minus
+                  this.operand = character + this.operand;
+                  this.numeralList.unshift(character);
+                }
+                this.operand += this.operand === '' ? '-' : '';
+                this.numeralList.push(character);
             } else if (character == 'delete') {
                 // Delete the last entry.
                 this.numeralList.pop();

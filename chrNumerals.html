@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-    
+<html>    
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>ᏏᏉᏯ Numerals - Cherokee
@@ -13,22 +13,23 @@
 
     <script type="text/javascript" src="/js/chrNumerals.js"> </script>
 
+    <script type="text/javascript" src="/js/testChrCalcEntries.js"> </script>
+
     <script type="text/javascript">
  
     function onload() {
       var decimalCalculator = setupCalc();
 	}
 
-    function hideshow (name){
-    var showhide = document.getElementById(name);
-    if (showhide.style.display == "none")
-    {
-        showhide.style.display = "block";
+    function MainHideShow (name) {
+      var showhide = document.getElementById(name);
+      if (showhide.style.display == "none") {
+          showhide.style.display = "block";
+      } else {
+          showhide.style.display = "none";
+      }
+      return false;
     }
-    else{
-        showhide.style.display = "none";
-    }
-}
 	</script>
    </head>
    
@@ -137,11 +138,10 @@
 
   <div id="chr_calculator">
     <form action='index.html' method='post' name='calc'>
-        <input type='text' disabled='true' name='output' id='outputChr' value="0" />
+        <input type='text' disabled='true' name='output' id='outputChr' value="0" 
+        style="display: none;"/>
         
-    <div id="keypad"> 
-    <br>
-    
+    <div id="keypad">     
     <!- X Register: Accumulator of images ->
     <div id="chr_img_accumulator" class="ImageBorder">
       <img src="/images/CHR_0.png" height="50" class="accum" alt="0">
@@ -291,11 +291,12 @@
     <img src="/images/CHR_1E18A.png" height="30" class="ImageBorder" alt="1e18" value='1e18' title='1e18'>
         </td>
     <td> <input type='button' value='.' /> </td>
+    <td> <input type='button' value='-' /> </td>
   </tr>
   <tr>
     <td> <input type='button' value='=' /> </td>
-    <td> <input type="button" value="delete"></td>
-    <td> <input type="button" value="clear"> </td>
+    <td> <input type="button" value="del"></td>
+    <td> <input type="button" value="clr"> </td>
   </tr>
   </table>
   </div>
@@ -309,6 +310,7 @@
    <div id='test_output'>
       OK
     </div>
+    <button value='test all' onClick='runTests(); return false;'>Run Tests</button>
   </div>
   
  </div>
@@ -319,8 +321,9 @@
  Sequoyahs Numerals in Cherokee and English</a> by John Ross of the Cherokee Nation Translation Department.
  </div>
  <div id='controls'>
-   <button onclick="hideshow('show_testing')" value="testShow">Testing</button>
-   <button onclick="hideshow('calculator')" value="calcShow">Decimal calculator</button>
+   <button onclick="return MainHideShow('show_testing');">Testing</button>
+   <button onclick="return MainHideShow('calculator');" value="calcShow">Decimal calculator</button>
+   <button onclick="return MainHideShow('outputChr');" value="calcShow">Decimal output</button>
 </div>
    </body>
    

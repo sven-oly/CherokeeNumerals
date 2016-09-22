@@ -20,7 +20,7 @@ function showhide(id) {
   var e = document.getElementById(id);
   var vis = e.style.display;
   e.style.display = (vis == 'block') ? 'none' : 'block';
-  return;
+  return false;
 }
 
 function cleanUpListDeletions(l1, l2) {
