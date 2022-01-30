@@ -1,0 +1,10 @@
+*.DS*
+*.pyc
+*~
+*.save
+#py_convert/*
+CLDR/*
+#*
+env/*
+.idea
+lib
