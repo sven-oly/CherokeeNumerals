@@ -2,17 +2,35 @@
 // Same as the Python backend code.
 
   // Init image array.
-  var imgArrayNames = ['1E18A', '1E15A', '1E12A','1E9A', '1E6A','1000', '100',
+  const imgArrayNames = ['1E18A', '1E15A', '1E12A','1E9A', '1E6A','1000', '100',
     '90', '80', '70', '60', '50', '40', '30',
     '20', '19', '18', '17', '16', '15', '14',
     '13', '12', '11', '10',
     '9', '8', '7', '6', '5', '4', '3',
     '2', '1', '0']; 
 
-  var numeralValues = [1e18, 1e15, 1e12, 1e9, 1e6, 1000,
+  const numeralValues = [1e18, 1e15, 1e12, 1e9, 1e6, 1000,
     100, 90, 80, 70, 60, 50, 40, 30, 20,
     19, 18, 17, 16, 15, 14, 13, 12, 11, 10,
-    9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+		       9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+
+  // Increasing values
+  const numeralValuesInc = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+		       10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+		       20,30, 40, 50, 60 ,70, 80, 90,
+			    100, 1000, 1e6, 1e9, 1e12, 1e15, 1e18];
+
+  // Code points in Unicode PUA.
+  const codePts = [
+    // 0 - 19
+    0xf600, 0xf601, 0xf602, 0xf603, 0xf604, 0xf605, 0xf606, 0xf607,
+    0xf608, 0xf609, 0xf60a, 0xf60b, 0xf60c, 0xf60d, 0xf60e, 0xf60f,
+    0xf610, 0xf611, 0xf612, 0xf613,
+    // 20 - 90
+    0xf614, 0xf615, 0xf616, 0xf617, 0xf618, 0xf619, 0xf61a, 0xf61b,
+    // 100, 1000, 10^6, etc.
+      0xf61c, 0xf61d, 0xf61e, 0xf61f, 0xf620
+  ];
 
 
 // Toggle the region id.
