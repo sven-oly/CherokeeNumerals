@@ -1,25 +1,18 @@
-  
-  // Global Finite State Machine for the calculator.
-  calcFSM = null;
-  
-  // All the numeral images.
-  var imgArray = new Array();
 
-  var accumIndex = 0;
+// Global Finite State Machine for the calculator.
+calcFSM = null;
   
-  // Init image array.
-  // var imgArrayNames = ['1E18A', '1E15A', '1E12A','1E9A', '1E6A','1000', '100',
-  //   '90', '80', '70', '60', '50', '40', '30',
-  //   '20', '19', '18', '17', '16', '15', '14',
-  //   '13', '12', '11', '10',
-  //   '9', '8', '7', '6', '5', '4', '3',
-  //   '2', '1', '0', 'minus']; 
-   var imgValues = [1e18, 1e15, 1e12, 1e9, 1e6, 1000, 100,
-     90, 80, 70, 60, 50, 40, 30,
-     20, 19, 18, 17, 16, 15, 14,
-     13, 12, 11, 10,
-     9, 8, 7, 6, 5, 4, 3,
-     2, 1, 0, -1];
+// All the numeral images.
+var imgArray = new Array();
+
+var accumIndex = 0;
+  
+var imgValues = [1e18, 1e15, 1e12, 1e9, 1e6, 1000, 100,
+		 90, 80, 70, 60, 50, 40, 30,
+		 20, 19, 18, 17, 16, 15, 14,
+		 13, 12, 11, 10,
+		 9, 8, 7, 6, 5, 4, 3,
+		 2, 1, 0, -1];
 
 function initImgArray() {   
   for (i = 0; i < imgArrayNames.length; i++) {
@@ -41,16 +34,27 @@ function initImgArray() {
   // Calculator variables.
   // Put the new list into the output area && reset numList.
   function updateChrOutput(new_numlist, chr_output_area) {
+    let textOutputArea = document.getElementById('accumulator_codes');
     clearArea(chr_output_area);
+    let outputText = [];
+      
     var images = chr_output_area.querySelectorAll(".accum");
     for (var k = 0; k < new_numlist.length; k++) {
       var index = valueToImgIndex(new_numlist[k]);
-      images[k].src = imgArray[index].src;
+//	images[k].src = imgArray[index].src;
+
+	const charIndex = imgArrayNames.length - index - 1;
+	const nextChar = charPoints[charIndex];
+	outputText.push(nextChar);
     }
+    // Fill in the text area.
+    textOutputArea.innerHTML = outputText.join('');
   }
   
-  function clearArea(chr_output_area) {
+function clearArea(chr_output_area) {
 	// Clear out the images.
+    let textArea = document.getElementById('accumulator_codes');
+    textArea.innerHTML = '';
     var images = chr_output_area.querySelectorAll(".accum");
     var size = images.length;
     for (var i = 0; i < size; i ++) {

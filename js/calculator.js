@@ -121,5 +121,5 @@
 }());
 
     function setupCalc() {
-      calculator = new Calc($('calculator'), $('buttontable'), $('output'));
+      calculator = new Calc($('calculator'), $('chrButtonTableNew'), $('output'));
     }

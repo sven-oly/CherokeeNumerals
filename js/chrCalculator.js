@@ -1,6 +1,8 @@
 // OO Cherokee Calculator
 // Based on http://jsfiddle.net/doug65536/peC3r/
 
+let chrCalculator = null;
+
 (function () {
     "use strict";
     // Get doc from the ID.
@@ -112,7 +114,8 @@
                 // updateChrOutput(resultVals[0], this.chr_output);
            } else if (character[0] >= '0' && character[0] <= '9') {
                 // Put numeral on the list, and display it.
-                this.numeralList.push(parseFloat(character));
+                this.numeralList.push(character);
+                // this.numeralList.push(parseFloat(character));
                 // this.num_list_output.innerHTML = this.numeralList;
 				// Recompute digital operand from the Cherokee list value.
                 var newVal = numListToInteger(this.numeralList);            
@@ -131,6 +134,7 @@
             tan: Math.tan
         },
         on_input: function (character) {
+	    let value = charToValue[character];
             this.add_input(character);
             this.output.value = this.get_operand();
    			this.num_list_output.innerHTML = this.numeralList;
@@ -169,7 +173,17 @@
         }
     };
 
-    var calculator;
+    let charToValue = null;
+    let valueToCodePoint = null;
+    Calc.prototype.setCharToValue = function(x) {
+        charToValue = x;
+    }
+    Calc.prototype.setValueToCodePoint = function(x) {
+        valueToCodePoint = x;
+    }
+
+
+    let calculator;
 
     function test0() {
       // Tests that should pass
@@ -182,11 +196,17 @@
     }
     
 
-      calculator = new Calc($('chr_calculator'), $('chrButtontable'), $('outputChr'),
-        $('chr_img_accumulator'), $('numeral_list'), $('numeral_list'), $('test_output'));
+    calculator = new Calc($('chr_calculator'), $('chrButtontableNew'), $('outputChr'),
+			  $('chr_img_accumulator'), $('numeral_list'), $('numeral_list'), $('test_output'));
     
-      // Set up output area.
-      initImgArray();
-
+    chrCalculator = calculator;
 }());
+
+
+function setupCalc() {
+    calculator = new Calc($('calculator'), $('chrButtonTableNew'), $('output'));
+}
+
+
+
 
