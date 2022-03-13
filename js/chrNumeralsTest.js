@@ -67,7 +67,7 @@ function testDecToChr() {
     var test = chrTestSets[i];
     var t0 = chrTestSets[i][0];
     var t1 = chrTestSets[i][1];
-    var testResult = digitalToSequoah(t1);
+    var testResult = formatToSequoah(t1);
     var result = testResult[0];
     if (compareLists(result, t0)) {
       passCount += 1;

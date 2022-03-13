@@ -14,7 +14,9 @@
 
     <style>
       td {
-	  text-align: center;
+          text-align: center;
+          font-family:CherokeeNumerals;
+          font-size: 32px;
       }      
     @font-face{
       font-family:'CherokeeNumerals';
@@ -36,25 +38,48 @@
     <script type="text/javascript" src="/js/testChrCalcEntries.js"> </script>
     -->
     <script type="text/javascript">
- 
-    function onload() {
-	// Connect numeral data to calculator.
-	chrCalculator.setCharToValue(charToValue);
-	chrCalculator.setValueToCodePoint(valueToCodePoint);
-    }
 
-    function MainHideShow (name) {
-      var showhide = document.getElementById(name);
-      if (showhide.style.display == "none") {
-          showhide.style.display = "block";
-      } else {
-          showhide.style.display = "none";
+      // Toggle the region id.
+      function showhide(id) {
+          var e = document.getElementById(id);
+          var vis = e.style.display;
+          e.style.display = (vis === 'block') ? 'none' : 'block';
+          return false;
       }
-      return false;
-    }
 
-    function clickNumeral(value) {
-    }
+      // All the Cherokee-specific functions
+      const chrNumerals = new ChrNumerals();
+      
+      function onload() {
+          // Connect CHR numeral data to calculator.
+	  chrCalculator.setNumeralObject(chrNumerals);
+
+	  // Ready to use the calculator.
+	  chrCalculator.init();
+      }
+
+      function MainHideShow (name) {
+          var showhide = document.getElementById(name);
+          if (showhide.style.display == "none") {
+              showhide.style.display = "block";
+          } else {
+              showhide.style.display = "none";
+          }
+          return false;
+      }
+      
+      function clearArea(chr_output_area) {
+          let textArea = document.getElementById('chrOutput');
+          textArea.innerHTML = '';
+      }
+
+      function runTests() {
+	  const numTests = new TestChrNumerals(chrNumerals);
+	  numTests.testIntToList();  // OK!
+	  // Needs work!
+	  numTests.testFormat();
+	  numTests.testParse();
+      }
    </script>
    </head>
    
@@ -64,7 +89,7 @@
     <div id="calculator" style="display: none;">
     <!-- From http://jsfiddle.net/doug65536/peC3r/ -->
       <h2>OOP Calculator</h2>
-        <form action='index.html' method='post' name='calc'>
+        <form action='' method='post' name='calc'>
         <input type='text' disabled='false' name='output' id='output' value="0" />
 
         <table id="buttontable">
@@ -113,39 +138,14 @@
 
 
   <div id="chr_calculator">
-    <form action='index.html' method='post' name='calc'>
-        <input type='text' disabled='true' name='output' id='outputChr' value="0" 
-        style="display: none;"/>
         
     <div id="keypad">     
-    <!- X Register: Accumulator of images ->
-   <!-- <div id="chr_img_accumulator" class="ImageBorder">
-      <img src="/images/CHR_0.png" height="50" class="accum" alt="0">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-      <img src="/images/CHR_blank.png" height="50" class="accum" alt="blank">
-    </div>
--->
-    <textarea id="accumulator_codes" class="CherokeeNumeralsClass"></textarea>
-  <table id="chrButtontableNew" class="CherokeeNumeralsClass">
-    <tr>
+    <!-- X Register -->
+    <textarea id="outputChr" class="CherokeeNumeralsClass"></textarea>
+    <table id="chrButtontableNew" class="CherokeeNumeralsClass">
+      <tr>
     <td>
-      <input type='button' value='*' />
+      <input type='button' value='*'  class='CherokeeNumeralsClass'/>
     </td>
     <td title='0'><input type='button' value='' class='CherokeeNumeralsClass'></td>
     <td title='1'><input type='button' value='' class='CherokeeNumeralsClass'></td>
@@ -160,7 +160,7 @@
   </tr>
   <tr>
     <td>
-      <input type='button' value='-' />
+      <input type='button' value='-'  class='CherokeeNumeralsClass'/>
     </td>
     <td title='10'><input type='button' value='' class='CherokeeNumeralsClass'></td>
     <td title='11'><input type='button' value='' class='CherokeeNumeralsClass'></td>
@@ -174,7 +174,7 @@
     <td title='19'><input type='button' value='' class='CherokeeNumeralsClass'></td>
 </tr>
 <tr>
-    <td><input type='button' value='+'/></td>
+    <td><input type='button' value='+' class='CherokeeNumeralsClass'/></td>
     <td title='20'><input type='button' value='' class='CherokeeNumeralsClass'></td>
     <td title='30'><input type='button' value='' class='CherokeeNumeralsClass'></td>
     <td title='40'><input type='button' value='' class='CherokeeNumeralsClass'></td>
@@ -186,7 +186,7 @@
     <td title='100'><input type='button' value='' class='CherokeeNumeralsClass'></td>
 </tr>
 <tr>
-    <td><input type='button' value='/'/></td>
+    <td><input type='button' value='/' class='CherokeeNumeralsClass'/></td>
     <td title='1e3'><input type='button' value='' class='CherokeeNumeralsClass'></td>
     <td title='1e6'><input type='button' value='' class='CherokeeNumeralsClass'></td>
     <td title='1e9'><input type='button' value='' class='CherokeeNumeralsClass'></td>
@@ -197,10 +197,10 @@
     <td title='-20'><input type='button' value='' class='CherokeeNumeralsClass'></td>
   </tr>
   <tr>
-    <td> <input type='button' value='=' /> </td>
-    <td> <input type='button' value='.' /> </td>
-    <td> <input type="button" value="delete"></td>
-    <td> <input type="button" value="clear"> </td>
+    <td><input type='button' value='=' class='CherokeeNumeralsClass'/></td>
+    <td><input type='button' value='.' class='CherokeeNumeralsClass'/></td>
+    <td><input type="button" value="delete"> </td>
+    <td><input type="button" value="clear"></td>
   </tr>
   </table>
   </div>
@@ -209,14 +209,18 @@
     <div id="numeral_list">
       <br />
     </div>
-   TEST OUTPUT:
-   <div id='test_output'>
-      OK
-    </div>
-    <button value='test all' onClick='runTests(); return false;'>Run Tests</button>
   </div>
   
- </div>
+  <div id="decimalOutputDiv" style="display: none">
+    <h4>Decimal output</h4>
+    <textarea id="decimalOutput">
+    </textarea>
+  </div>
+  <div id="logDiv" style="display: none">
+    <h4>Log output</h4>
+    <textarea id="logArea">
+      </textarea>
+  </div>
  <div id="reference">
  <br />
 <!-- Learn more about Cherokee numerals in
@@ -228,15 +232,31 @@
             target="_blank_">
          Sequoyah and the Almost-Forgotten History of Cherokee Numerals</a>
      </a>
-     </p>
+</p>
+<p>See <a href='https://www.languagesandnumbers.com/how-to-count-in-cherokee/en/chr/#numbers-list' target='_blank_'>
+  How to Count in Cherokee</a> for the names of the numbers in ᏣᎳᎩ (Cherokee).
+
+</p>
+<p>And be sure to try <a href='https://www.languagesandnumbers.com/how-to-count-in-cherokee/en/chr/#numbers-in-full' target="_blank_">writing a number in full.</a> For example, 123 is 
+ᏐᏬ ᏍᎪᎯᏥᏆ ᏔᎵᏍᎪ ᏦᎢ (sowo sgohitsiqua talisgo tsoi.)
+</p>
  </div>
  <div id='controls'>
+   <div id='test_output'>
+    <button value='test all' onClick='runTests();'>Run Tests</button>
+    </div>
    <button onclick="return MainHideShow('show_testing');">Testing</button>
    <button onclick="return MainHideShow('calculator');" value="calcShow">Decimal calculator</button>
-   <button onclick="return MainHideShow('outputChr');" value="calcShow">Decimal output</button>
-</div>
-   </body>
+   <button onclick="return MainHideShow('decimalOutputDiv');" value="decimalShow">Decimal output</button>
+   <button onclick="return MainHideShow('logDiv');" value="logShow">Logging</button>
+ </div>
+
+ <div id="logDiv">
+   <textarea id="logText" class='CherokeeNumeralsClass'>
+   </textarea>
+ </div>
+</body>
    
-    <script type="text/javascript" src="/js/chrCalculator.js"> </script>    
+<script type="text/javascript" src="/js/chrCalculatorNew.js"> </script>    
 
 </html>
