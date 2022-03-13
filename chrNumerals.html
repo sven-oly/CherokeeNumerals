@@ -29,6 +29,18 @@
       font-family:CherokeeNumerals;
       font-size: 32px;
     }
+    .CherokeeNumeralsOutputClass {
+      font-family:CherokeeNumerals;
+      font-size: 48px;
+      font-weight:bold;
+    }
+    .DecimalDisplay {
+	background-color: #cccccc;
+    }
+    .logArea {
+	width:600px;
+	height:200px;
+    }
     </style>
     
 
@@ -50,12 +62,33 @@
       // All the Cherokee-specific functions
       const chrNumerals = new ChrNumerals();
       
+      function showDecimal(value) {
+	  let area = document.getElementById('decimalOutput');
+	  let result = value;
+	  if (Intl.NumberFormat) {
+	      let fmt = new Intl.NumberFormat('en');
+	      result = fmt.format(value);
+	  }
+	  if (area) {
+	      area.innerHTML = result;
+	  }
+      }
+      
+      // Append to the output.
+      function addToLogging(str) {
+	  let area = document.getElementById('logArea');
+	  area.innerHTML += ' ' + str;
+          area.scrollTop = area.scrollHeight;
+      }
+      
       function onload() {
           // Connect CHR numeral data to calculator.
 	  chrCalculator.setNumeralObject(chrNumerals);
 
 	  // Ready to use the calculator.
 	  chrCalculator.init();
+	  chrNumerals.setDisplayDecimal(showDecimal);
+	  chrNumerals.setLoggingFn(addToLogging);
       }
 
       function MainHideShow (name) {
@@ -141,7 +174,10 @@
         
     <div id="keypad">     
     <!-- X Register -->
-    <textarea id="outputChr" class="CherokeeNumeralsClass"></textarea>
+    <span id="outputChr" class="CherokeeNumeralsOutputClass"></span>
+    <div id="decimalOutputDiv" style="display: none" class='DecimalDisplay'>
+    <p>Decimal output: <span id="decimalOutput"></span></p>
+  </div>
     <table id="chrButtontableNew" class="CherokeeNumeralsClass">
       <tr>
     <td>
@@ -211,18 +247,11 @@
     </div>
   </div>
   
-  <div id="decimalOutputDiv" style="display: none">
-    <h4>Decimal output</h4>
-    <textarea id="decimalOutput">
-    </textarea>
-  </div>
   <div id="logDiv" style="display: none">
     <h4>Log output</h4>
-    <textarea id="logArea">
-      </textarea>
+    <textarea id="logArea" class='logArea'></textarea>
   </div>
  <div id="reference">
- <br />
 <!-- Learn more about Cherokee numerals in
  <a href="http://www.talbotlibrary.org/store/p191/Sequoyah's_Numerals_in_Cherokee_and_English.html" target="_blank_">
  Sequoyahs Numerals in Cherokee and English</a> by John Ross of the Cherokee Nation Translation Department.
@@ -242,16 +271,14 @@
 </p>
  </div>
  <div id='controls'>
-   <div id='test_output'>
-    <button value='test all' onClick='runTests();'>Run Tests</button>
-    </div>
-   <button onclick="return MainHideShow('show_testing');">Testing</button>
-   <button onclick="return MainHideShow('calculator');" value="calcShow">Decimal calculator</button>
+   <button value='test all' onClick='runTests();'>Run Tests</button>
+   <button onclick="return MainHideShow('calculator');" value="calcShow"
+	   style="display: none">Decimal calculator</button>
    <button onclick="return MainHideShow('decimalOutputDiv');" value="decimalShow">Decimal output</button>
    <button onclick="return MainHideShow('logDiv');" value="logShow">Logging</button>
  </div>
 
- <div id="logDiv">
+ <div id="logDiv" style="display: none">
    <textarea id="logText" class='CherokeeNumeralsClass'>
    </textarea>
  </div>

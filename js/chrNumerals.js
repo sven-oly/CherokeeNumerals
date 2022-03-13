@@ -226,6 +226,31 @@ class ChrNumerals {
 	    this.codePointToValue.set(codePts[i], num);
 	    this.charToValue.set(char, num);
 	};
+
+	// special outputs
+	this.decimalOutputFn = null;
+	this.logOutputFn = null;
+    }
+
+    setDisplayDecimal(newFn) {
+	// A callback for decimal results.
+	this.decimalOutputFn = newFn;
+    }
+    displayDecimal(value) {
+	if (this.decimalOutputFn) {
+	    this.decimalOutputFn(value);
+	}
+    }
+    
+    setLoggingFn(newFn) {
+	// A callback for decimal results.
+	this.logOutputFn = newFn;
+    }
+    
+    displayLog(value) {
+	if (this.logOutputFn) {
+	    this.logOutputFn(value);
+	}
     }
 
     getCharToValueMap() {

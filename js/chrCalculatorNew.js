@@ -65,7 +65,6 @@ class calculator4Function {
 
 	this.state = ArgState1;
 
-	this.pendingOp = '';
 	this.result = 0;
 	this.operand = '';
 	this.operation = '';
@@ -208,16 +207,27 @@ class calculator4Function {
 	    break;
 	case '/':
 	    // TODO: Check for divide by zero.
-	    result = this.accum1 / this.accum2;
+	    result = Math.floor(this.accum1 / this.accum2);
 	    break;
 	}
 	this.accum1 = result;
 	this.result = result;
+	
+	if (this.numeralObject.displayLog) {
+	    this.numeralObject.displayLog(' --> ');
+	}
+	
     }
 
     Calc.prototype.display = function (newVal) {
 	var resultString = this.numeralObject.formatInt(newVal);
 	this.output.innerHTML = resultString;
+	if (this.numeralObject.displayDecimal) {
+	    this.numeralObject.displayDecimal(newVal);
+	}
+	if (this.numeralObject.displayLog) {
+	    this.numeralObject.displayLog(newVal);
+	}
     }
 
     Calc.prototype.accumulateChar1 = function (ch) {
@@ -237,7 +247,18 @@ class calculator4Function {
     }
 
     Calc.prototype.updatePendingOp = function (op) {
-	this.pendingOp = op;
+	this.operation = op;
+	if (this.numeralObject.displayLog) {
+	    this.numeralObject.displayLog(op);
+	}
+    }
+
+    Calc.prototype.enterEqualFn = function () {
+	// Log if requested
+	if (this.numeralObject.displayLog) {
+	    this.numeralObject.displayLog(' = \n');
+	}
+	
     }
 
     Calc.prototype.init = function () {
@@ -268,7 +289,10 @@ class calculator4Function {
 	const newVal =
 	      this.numeralObject.numberListToInteger(this.numeralList);
 	this.display(newVal);
-	// Don't change the state, however.
+
+	if (this.numeralObject.displayLog) {
+	    this.numeralObject.displayLog('#clear');
+	}
     }
 
 	// Clear everything
@@ -291,8 +315,9 @@ class calculator4Function {
     }
 
     // FMS state handlers
-     Calc.prototype.handleArgState1 = function (ch) {
-	 if (this.isEnterEqual(ch)) {
+    Calc.prototype.handleArgState1 = function (ch) {
+	if (this.isEnterEqual(ch)) {
+	    this.enterEqualFn();
 	    this.state = AfterEqState;
 	    return;
 	}
@@ -302,7 +327,7 @@ class calculator4Function {
 	    return;
 	}
 	if (this.isEnterOp(ch)) {
-	    this.operation = ch;
+	    this.updatePendingOp(ch);
 	    this.state = AfterOpState1;
 	    return;
 	}
@@ -319,6 +344,7 @@ class calculator4Function {
 
     Calc.prototype.handleAfterOpState1 = function (ch) {
 	if (this.isEnterEqual(ch)) {
+	    this.enterEqualFn();
 	    return;
 	}
 	if (ch === 'clear') {
@@ -333,14 +359,16 @@ class calculator4Function {
 	    return;
 	}
 	if (this.isEnterOp(ch)) {
-	    this.operation = ch;
+	    this.updatePendingOp(ch);
 	    this.doPendingOp();
+	    this.display(this.accum1);
 	    return;
 	}
     }
 
     Calc.prototype.handleArgState2 = function (ch) {
 	 if (this.isEnterEqual(ch)) {
+	    this.enterEqualFn();
 	    this.doPendingOp();
 	    this.display(this.accum1);
 	    this.state = AfterEqState;
@@ -349,13 +377,14 @@ class calculator4Function {
 	if (this.isEnterOp(ch)) {
 	    this.doPendingOp();
 	    this.display(this.accum1);
-	    this.operation = ch;
+	    this.updatePendingOp(ch);
 	    this.state = AfterOpState1;
 	    return;
 	}
 	if (this.isEnterNumeral(ch)) {
 	    this.accumulateChar2(ch);
 	    this.state = ArgState2;  // Same state
+	    this.display(this.accum2);
 	    return;
 	}
 	if (ch === 'clear') {
@@ -382,10 +411,11 @@ class calculator4Function {
 	    return;
 	}
 	 if (this.isEnterEqual(ch)) {
+	    this.enterEqualFn();
 	    return;
 	}
 	if (this.isEnterOp(ch)) {
-	    this.operation = ch;
+	    this.updatePendingOp(ch);
 	    this.state = AfterOpState1;
 	}
     }
